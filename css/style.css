@@ -1,0 +1,16 @@
+.through{
+    text-decoration: line-through;
+    text-decoration-color: green;         
+    text-decoration-thickness: 4px;     
+}
+
+.fs-7p{
+    font-size: 0.96em;
+}
+
+#table-list-home td:nth-child(4), 
+#table-list-consult td:nth-child(4) {
+    word-break: break-word; /* quebra palavras longas */
+    white-space: normal;    /* permite quebra de linha */
+    vertical-align: top;    /* alinha conteúdo ao topo */
+}
