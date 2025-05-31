@@ -1,5 +1,6 @@
 # to-do-list
-Aplicação simples de lista de tarefas para ajudar na organização diária, com interface responsiva e moderna.
+Aplicação simples de lista de tarefas para ajudar na organização diária, com interface responsiva e moderna. Os dados das tarefas são salvos no **localStorage**, garantindo salvamento persistente no navegador. O app possui duas páginas principais: uma página de cadastro para adicionar novas tarefas e outra página de consulta, onde é possível visualizar, finalizar ou excluir tarefas.
+
 
 ## 🚀 Tecnologias Utilizadas
 
