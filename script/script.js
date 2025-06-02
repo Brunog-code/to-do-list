@@ -15,4 +15,12 @@ const showDiv = () => {
         windowTask.classList.add('ocult-window')
         windowTask.classList.remove('exib-window')
     }
+
+    //fechar se clicar fora
+    window.addEventListener('click', (event) => {
+        if(event.target === windowTask){
+            windowTask.classList.add('ocult-window')
+            windowTask.classList.remove('exib-window')
+        }
+    })
 }

@@ -9,13 +9,8 @@
 }
 
 #table-list-home td:nth-child(1), 
-#table-list-consult td:nth-child(1) {
-    word-break: break-word; /* quebra palavras longas */
-    white-space: normal;    /* permite quebra de linha */
-    vertical-align: top;    /* alinha conteúdo ao topo */
-}
-
-#table-list-home td:nth-child(2),
+#table-list-home td:nth-child(4),
+#table-list-consult td:nth-child(1),
 #table-list-infos td:nth-child(2) {
     word-break: break-word; /* quebra palavras longas */
     white-space: normal;    /* permite quebra de linha */
@@ -34,6 +29,7 @@
     overflow: hidden;
     background-color: rgba(0,0,0,0.9);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -46,15 +42,13 @@
     display: flex;
 }
 
+.container-close-window{
+    margin-bottom: 20px;
+}
+
 .x-close-window{
-    position: absolute;
-    top: 45px;
-    right: 170px;
     font-size: 1.5em;
     color: white;
     cursor: pointer;
-}
-
-.x-close-window:hover{
-    transform: scale(1.20);
+    margin-bottom: 5px;
 }
