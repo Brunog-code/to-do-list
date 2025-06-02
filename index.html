@@ -49,10 +49,10 @@
 
         <div class="row mt-1">
             <div class="col-md-3 mb-2">
-                <input class="form-control" type="text" id="inp-name" placeholder="Nome" required autocomplete="off">
+                <input class="form-control" type="text" id="inp-name" placeholder="Nome" required autocomplete="off" maxlength="22">
             </div>
 
-            <div class="col-md-3 mb-2">
+            <div class="col-md-2 mb-2">
                 <select class="form-control" id="inp-category">
                     <option value="">Categoria</option>
                     <option value="1">Trabalho</option>
@@ -64,8 +64,12 @@
                 </select>
             </div>
 
-            <div class="col-md-3 mb-2">
+            <div class="col-md-2 mb-2">
                 <input class="form-control" type="date" id="inp-date">
+            </div>
+
+            <div class="col-md-2 mb-2">
+                <input class="form-control" type="time" id="inp-hour">
             </div>
 
             <div class="col-md-3 mb-3">
@@ -115,6 +119,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Script -->
+     <script src="script/task.js"></script>
      <script src="script/script.js"></script>
 </body>
 </html>

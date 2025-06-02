@@ -8,9 +8,53 @@
     font-size: 0.96em;
 }
 
-#table-list-home td:nth-child(4), 
-#table-list-consult td:nth-child(4) {
+#table-list-home td:nth-child(1), 
+#table-list-consult td:nth-child(1) {
     word-break: break-word; /* quebra palavras longas */
     white-space: normal;    /* permite quebra de linha */
     vertical-align: top;    /* alinha conteúdo ao topo */
+}
+
+#table-list-home td:nth-child(2),
+#table-list-infos td:nth-child(2) {
+    word-break: break-word; /* quebra palavras longas */
+    white-space: normal;    /* permite quebra de linha */
+    vertical-align: top;    /* alinha conteúdo ao topo */
+}
+
+/* ocultar e exibir div info tasks */
+.div-window-task{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    padding-top: 60px;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ocult-window{
+    display: none;
+}
+
+.exib-window{
+    display: flex;
+}
+
+.x-close-window{
+    position: absolute;
+    top: 45px;
+    right: 170px;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+}
+
+.x-close-window:hover{
+    transform: scale(1.20);
 }

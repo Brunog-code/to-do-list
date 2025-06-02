@@ -52,7 +52,7 @@
                 <input class="form-control" type="text" id="inp-name-search" placeholder="Nome" required autocomplete="off">
             </div>
 
-            <div class="col-md-3 mb-2">
+            <div class="col-md-2 mb-2">
                 <select class="form-control" id="inp-category-search">
                     <option value="">Categoria</option>
                     <option value="1">Trabalho</option>
@@ -64,8 +64,12 @@
                 </select>
             </div>
 
-            <div class="col-md-3 mb-2">
+            <div class="col-md-2 mb-2">
                 <input class="form-control" type="date" id="inp-date-search">
+            </div>
+
+            <div class="col-md-2 mb-2">
+                <input class="form-control" type="time" id="inp-hour-search">
             </div>
 
             <div class="col-md-3 mb-3">
@@ -116,9 +120,8 @@
                             <th>Nome</th>
                             <th>Categoria</th>
                             <th>Data</th>
-                            <th>Descrição</th>
+                            <th>Mais</th>
                             <th>Status</th>
-                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody id="table-list-body-consult">
@@ -126,7 +129,24 @@
                 </table>
             </div>
         </div>
-    </section>
+    </section> <!-- Fim container-->
+
+    <section class="div-window-task ocult-window" id="window-task">
+        <span class="x-close-window" id="btn-close-window">X</span>
+        <div class="content-window-task" id="content-window-info">
+            <table class="table" id="table-list-infos">
+                <thead id="header-table-infos">
+                    <tr class="fs-7p">
+                        <th>Hora</th>
+                        <th>Descrição</th>  
+                        <th>Excluir</th>  
+                    </tr>
+                </thead>
+                <tbody id="table-list-body-info">
+                </tbody>
+            </table>
+        </div>
+    </section>    
     
     <!-- Script toast -->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -136,5 +156,7 @@
 
     <!-- Script -->
      <script src="script/script.js"></script>
+     <script src="script/task.js"></script>
+     
 </body>
 </html>
