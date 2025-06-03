@@ -9,6 +9,7 @@ class Task{
         this.status = status
     }
     
+    //validar dados do input (desconsiderando descrição e status)
     validData(){
         for(let i in this){
             if(i === 'desc' || i === 'status'){
@@ -22,6 +23,7 @@ class Task{
         return true
     }
 
+    //validar data
     static validDate(date){
         const regexDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 
@@ -31,7 +33,7 @@ class Task{
 
         return true
     }
-
+    //formatar data
     static formatDate(date){
 
         if(this.validDate(date)){
@@ -42,6 +44,7 @@ class Task{
         }    
     }
 
+    //controlar status (finalizado ou aberto)
     static changeStatus(id){
         let tasks = localStorage.getItem('tasks')
 
@@ -49,7 +52,7 @@ class Task{
             tasks = JSON.parse(tasks)
         }
 
-        tasks.forEach((item, i) => {
+        tasks.forEach((item) => {
             if(item.id == id){
                 if(item.status == false){
                     item.status = true
@@ -66,6 +69,7 @@ class Db{
     constructor(){
     }
 
+    //recuperar todos os obj do array, e depois aplica filtro, se houver.
     getItens(filter = {}){
         //recuperar as tasks salvas
         let tasksSaved = localStorage.getItem('tasks')
@@ -117,10 +121,10 @@ class Db{
                 })
             }
         }
-
         return tasks
     }
 
+    //monta o filtro, de acordo com o que o usuario escolher filtrar
     getItensFilter(){
         let inpNameSearch = document.querySelector('#inp-name-search')
         let inpCategorySearch = document.querySelector('#inp-category-search')
@@ -163,10 +167,10 @@ class Db{
         if(statusArr.length > 0){
             filterUser.status = statusArr
         }
-
         return this.getItens(filterUser)
     }
 
+    //monta o obj, e armazena no localStorage
     insertTask(){
         let inpName = document.querySelector('#inp-name')
         let inpCategory = document.querySelector('#inp-category')
@@ -179,7 +183,7 @@ class Db{
         let task = new Task(id, inpName.value, inpCategory.value, inpDate.value, inpHour.value, inpDesc.value)
 
         let arrTasks = localStorage.getItem('tasks')
-        arrTasks = arrTasks ? JSON.parse(arrTasks) : []
+        arrTasks = arrTasks ? JSON.parse(arrTasks) : [] //se tiver item salvo, armazena na array, se não vira um array vazio
 
         if(task.validData()){
             if(Task.validDate(task.date)){
@@ -204,13 +208,13 @@ class Db{
         }catch(e){
             this.toast('Erro ao remover o item selecionado!','#FF0000')
         }
-        
     }
     
     showDisplay(){
         let bodyPage = document.querySelector('#index-page')
         let consultPage = document.querySelector('#consult-page')
 
+        //se tiver no index
         if(bodyPage){
             let tasks = this.getItens()
 
@@ -218,10 +222,9 @@ class Db{
             let tableIndex = document.querySelector('#table-list-body-home')
             tableIndex.innerHTML = ''
 
-            //peda o cabecalho e exibe ou nao dependendo se tiver task
+            //exibe ou nao a tabela dependendo se tiver task
             let headerTableIndex = document.querySelector('#header-table-index')   
 
-            //exibe ou mostra se tiver item
             if(tasks.length > 0){
                 tableIndex.classList.remove('d-none')
                 headerTableIndex.classList.remove('d-none')
@@ -263,6 +266,7 @@ class Db{
                 row.insertCell(3).innerHTML = ` ${item.desc}`
             })
 
+        //se tiver na pagina de consulta
         }else if(consultPage){
             let tasks = this.getItensFilter()
 
@@ -270,6 +274,7 @@ class Db{
             let tableConsult = document.querySelector('#table-list-body-consult')
             tableConsult.innerHTML = ''
 
+            //caso o usuario tente pesquisar algo, e nao tem nada, retorna uma msg
             if(tasks.length < 1){
                 this.toast('Nenhum item cadastrado!', '#FF0000')
                 tableConsult.innerHTML = ''
@@ -281,7 +286,7 @@ class Db{
 
                 rowConsult.insertCell(0).innerHTML = `${item.name}` 
 
-                 //ajustar o tipo
+                //ajustar o tipo
                 switch(item.category){
                     case '1':
                         item.category = 'Trabalho'
@@ -305,7 +310,7 @@ class Db{
                 rowConsult.insertCell(1).innerHTML = ` ${item.category}`
                 rowConsult.insertCell(2).innerHTML = ` ${Task.formatDate(item.date)} `
                 
-                //btn que exibe div com horario e descrição
+                //btn que exibe div com horario, descrição e btnExcluir
                 let btnDivInfos = document.createElement('button')
                 btnDivInfos.className = 'btn btn-light btn-sm'
                 btnDivInfos.innerHTML = '<i class="fas fa-plus"></i>'
@@ -318,6 +323,7 @@ class Db{
                     let rowInfo = tableInfo.insertRow()
                     rowInfo.insertCell(0).innerHTML = `${item.hour}` 
                     rowInfo.insertCell(1).innerHTML = `${item.desc}` 
+
                     //cria o btn excluir
                     let btnEx = document.createElement('button')
                     btnEx.className = 'btn btn-danger btn-sm'
@@ -345,7 +351,7 @@ class Db{
                 btnFinaly.className = 'btn btn-warning btn-sm'
                 btnFinaly.innerHTML = '<i class="fas fa-check"></i>'
 
-                //verifica se esta finalizada a task para criar o btn correto
+                //verifica se está finalizada a task para criar o btn correto
                 if(item.status){
                     btnFinaly.className = 'btn btn-success btn-sm'
                 } else {
@@ -389,6 +395,7 @@ class Db{
 const db = new Db()
 
 //eventos
+
 //btnCad
 const indexPage = document.querySelector('#index-page')
 if(indexPage){
@@ -408,7 +415,6 @@ if (consultPage) {
         console.warn('Botão btnSearch não encontrado na página consult-page');
     }
 }
-
 
 //load table page index
 const bodyPage = document.querySelector('#index-page')
