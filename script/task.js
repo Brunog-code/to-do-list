@@ -196,7 +196,15 @@ class Db{
         }else{
             this.toast('Favor verificar os campos preenchidos!', '#FF0000')
         }
-        this.showDisplay()
+        this.showDisplay();
+
+        //limpa os inputs e volta o focus no input name
+        inpName.value = ''
+        inpCategory.value = ''
+        inpDate.value = ''
+        inpHour.value = ''
+        inpDesc.value = ''
+        inpName.focus()
     }
 
     remove(id){
